@@ -21,11 +21,6 @@
   align-items: flex-start;
 }
 
-.auth-buttons {
-  display: flex;
-  gap: 12px;
-}
-
 .mode-switch-btn {
   font-size: 13px;
   font-weight: 500;
@@ -40,36 +35,6 @@
 
 .mode-switch-btn:hover {
   background-color: rgba(16, 185, 129, 0.2);
-}
-
-.login-btn {
-  background-color: transparent;
-  color: #60a5fa;
-  border: 1px solid #60a5fa;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.login-btn:hover {
-  background-color: rgba(96, 165, 250, 0.1);
-}
-
-.signup-btn {
-  background-color: #2563eb;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.signup-btn:hover {
-  background-color: #1d4ed8;
 }
 
 .user-btn {

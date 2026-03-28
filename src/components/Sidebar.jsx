@@ -18,8 +18,8 @@ function Sidebar() {
     <aside className="sidebar">
 
       <div className="sidebar-brand">
-        <h1>EventHub</h1>
-        <p>Conference Management</p>
+        <h1>ShowFlow</h1>
+        <p>Admin Panel</p>
       </div>
 
       <nav className="sidebar-nav">

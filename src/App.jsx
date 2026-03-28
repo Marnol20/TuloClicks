@@ -10,6 +10,7 @@ import Venues from './components/Venues'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import UserView from './components/UserView'
+import EventDetails from './components/EventDetails'
 
 function App() {
   const [viewMode, setViewMode] = useState('admin') // 'admin' or 'user'
@@ -37,6 +38,7 @@ function App() {
             <Route path="/venues" element={<Venues />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/events/:eventId" element={<EventDetails onBack={() => window.history.back()} />} />
           </Routes>
         </div>
       )}

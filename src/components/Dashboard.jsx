@@ -12,12 +12,12 @@ const stats = [
 ]
 
 const initialAttendees = [
-  { name: 'John Doe', email: 'john@example.com', event: 'React Conference 2024' },
-  { name: 'Jane Smith', email: 'jane@example.com', event: 'React Conference 2024' },
-  { name: 'David Kim', email: 'david@example.com', event: 'React Conference 2024' },
-  { name: 'Alex Johnson', email: 'alex@example.com', event: 'Web Development Summit' },
-  { name: 'Maria Garcia', email: 'maria@example.com', event: 'AI & ML Workshop' },
-  { name: 'Sarah Williams', email: 'sarah@example.com', event: 'Frontend Masters Bootcamp' },
+  { name: 'Juan Santos', email: 'juan@example.com', event: 'Philippine Music Festival 2026' },
+  { name: 'Maria Reyes', email: 'maria@example.com', event: 'Philippine Music Festival 2026' },
+  { name: 'Pedro Cruz', email: 'pedro@example.com', event: 'Philippine Music Festival 2026' },
+  { name: 'Ana Garcia', email: 'ana@example.com', event: 'Manila Tech Conference' },
+  { name: 'Carlos Villanueva', email: 'carlos@example.com', event: 'Cebu Business Summit' },
+  { name: 'Elena Mendoza', email: 'elena@example.com', event: 'Davao Food Festival' },
 ]
 
 function getAttendeeCount(eventName) {
@@ -26,27 +26,27 @@ function getAttendeeCount(eventName) {
 
 const eventsData = [
   {
-    name: 'React Conference 2024',
-    date: 'June 15-17, 2024',
+    name: 'Philippine Music Festival 2026',
+    date: 'June 15-17, 2026',
     location: 'Pasay City, Metro Manila',
     status: 'Confirmed',
   },
   {
-    name: 'Web Development Summit',
-    date: 'July 8-9, 2024',
+    name: 'Manila Tech Conference',
+    date: 'July 8-9, 2026',
     location: 'Pasay City, Metro Manila',
     status: 'Planning',
   },
   {
-    name: 'AI & ML Workshop',
-    date: 'August 12, 2024',
-    location: 'Pasay City, Metro Manila',
+    name: 'Cebu Business Summit',
+    date: 'August 12, 2026',
+    location: 'Mandaue City, Cebu',
     status: 'Confirmed',
   },
   {
-    name: 'Frontend Masters Bootcamp',
-    date: 'September 20-22, 2024',
-    location: 'Mandaue City, Cebu',
+    name: 'Davao Food Festival',
+    date: 'September 20-22, 2026',
+    location: 'Davao City',
     status: 'Planning',
   },
 ]
@@ -62,11 +62,7 @@ function Dashboard({ onSwitchToUser }) {
           <h2>Welcome Back</h2>
           <p>Here's an overview of your events and management metrics</p>
         </div>
-        <div className="auth-buttons">
-          <button className="mode-switch-btn" onClick={onSwitchToUser}>Switch to User View</button>
-          <button className="login-btn" onClick={() => navigate('/login')}>Login</button>
-          <button className="signup-btn" onClick={() => navigate('/signup')}>Sign Up</button>
-        </div>
+        <button className="mode-switch-btn" onClick={onSwitchToUser}>Switch to User View</button>
       </div>
 
       <div className="stats-grid">

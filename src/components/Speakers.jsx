@@ -4,42 +4,72 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const eventsList = [
-  'React Conference 2024',
-  'Web Development Summit',
-  'AI & ML Workshop',
-  'Frontend Masters Bootcamp',
+  'Philippine Music Festival 2026',
+  'Manila Tech Conference',
+  'Cebu Business Summit',
+  'Davao Food Festival',
 ]
 
 const initialSpeakers = [
   {
-    name: 'Sarah Chen',
-    role: 'Senior Frontend Engineer',
-    event: 'React Conference 2024',
-    email: 'sarah@techcorp.com',
+    name: 'Maria Santos',
+    role: 'Music Director & Composer',
+    event: 'Philippine Music Festival 2026',
+    email: 'maria@musicph.com',
   },
   {
-    name: 'James Wilson',
-    role: 'Full Stack Developer',
-    event: 'Web Development Summit',
-    email: 'james@startupxyz.com',
+    name: 'Juan dela Cruz',
+    role: 'Award-Winning Singer',
+    event: 'Philippine Music Festival 2026',
+    email: 'juan@musicph.com',
   },
   {
-    name: 'Emma Rodriguez',
-    role: 'AI/ML Specialist',
-    event: 'AI & ML Workshop',
-    email: 'emma@ailabs.com',
+    name: 'Ana Reyes',
+    role: 'Music Producer',
+    event: 'Philippine Music Festival 2026',
+    email: 'ana@musicph.com',
   },
   {
-    name: 'Michael Zhang',
-    role: 'DevOps Engineer',
-    event: 'React Conference 2024',
-    email: 'michael@cloudsys.com',
+    name: 'Carlos Garcia',
+    role: 'Tech Innovator & CEO',
+    event: 'Manila Tech Conference',
+    email: 'carlos@techph.com',
   },
   {
-    name: 'Lisa Thompson',
-    role: 'UX/UI Designer',
-    event: 'Frontend Masters Bootcamp',
-    email: 'lisa@designstudio.com',
+    name: 'Elena Villanueva',
+    role: 'AI Research Scientist',
+    event: 'Manila Tech Conference',
+    email: 'elena@techph.com',
+  },
+  {
+    name: 'Roberto Tan',
+    role: 'Business Strategist',
+    event: 'Cebu Business Summit',
+    email: 'roberto@businessph.com',
+  },
+  {
+    name: 'Isabella Cruz',
+    role: 'Entrepreneurship Coach',
+    event: 'Cebu Business Summit',
+    email: 'isabella@businessph.com',
+  },
+  {
+    name: 'Miguel Santos',
+    role: 'Executive Chef',
+    event: 'Davao Food Festival',
+    email: 'miguel@foodph.com',
+  },
+  {
+    name: 'Sofia Reyes',
+    role: 'Culinary Expert',
+    event: 'Davao Food Festival',
+    email: 'sofia@foodph.com',
+  },
+  {
+    name: 'Diego Mendoza',
+    role: 'Food Critic & Writer',
+    event: 'Davao Food Festival',
+    email: 'diego@foodph.com',
   },
 ]
 

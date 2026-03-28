@@ -5,6 +5,7 @@
   min-height: 100vh;
   background-color: #000000;
   color: #ffffff;
+  font-family: 'Poppins', sans-serif;
 }
 
 .user-view-content {
@@ -19,6 +20,8 @@
   padding: 16px 48px;
   background-color: #000000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 100;
 }
 
 .user-view-logo {
@@ -42,6 +45,9 @@
 }
 
 .user-view-nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 32px;

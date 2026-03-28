@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import { MapPin, Clock, Users, Calendar, ChevronLeft, Share2, Download, ExternalLink } from 'lucide-react'
 import '../styles/EventDetails.css'
 
@@ -6,18 +7,65 @@ import '../styles/EventDetails.css'
 import { initialEvents } from './Events'
 import { initialSpeakers } from './Speakers'
 
-const eventData = initialEvents[0] // Use first event as example
-const eventSpeaker = initialSpeakers.find(s => s.event === eventData.name) || initialSpeakers[0]
-
-function EventDetails({ onBack, selectedEventId }) {
+function EventDetails({ onBack }) {
+  const { eventId } = useParams()
+  const navigate = useNavigate()
   const [isRegistered, setIsRegistered] = useState(false)
+  const [registrationStep, setRegistrationStep] = useState(1) // 1: Select Tickets, 2: Review Order
+  const [selectedTickets, setSelectedTickets] = useState({})
+  const [termsAccepted, setTermsAccepted] = useState(false)
 
-  // Get the selected event data based on ID
-  const selectedEvent = initialEvents.find(event => event.name === selectedEventId) || initialEvents[0]
+  // Get the selected event data based on URL param
+  const eventIndex = parseInt(eventId) - 1
+  const selectedEvent = (eventIndex >= 0 && eventIndex < initialEvents.length)
+    ? initialEvents[eventIndex]
+    : initialEvents[0]
   const eventSpeaker = initialSpeakers.find(s => s.event === selectedEvent.name) || initialSpeakers[0]
 
-  const handleRegister = () => {
+  // Ticket types for the event
+  const ticketTypes = [
+    { id: 'standard', name: 'Standard Pass', price: 5499, description: 'Access to all sessions' },
+    { id: 'vip', name: 'VIP Pass', price: 10999, description: 'Priority seating + networking lunch' },
+    { id: 'premium', name: 'Premium Pass', price: 16499, description: 'All access + workshop materials' },
+  ]
+
+  const handleTicketChange = (ticketId, quantity) => {
+    setSelectedTickets(prev => ({
+      ...prev,
+      [ticketId]: quantity
+    }))
+  }
+
+  const getTotalAmount = () => {
+    return Object.entries(selectedTickets).reduce((total, [ticketId, quantity]) => {
+      const ticket = ticketTypes.find(t => t.id === ticketId)
+      return total + (ticket ? ticket.price * quantity : 0)
+    }, 0)
+  }
+
+  const getTotalTickets = () => {
+    return Object.values(selectedTickets).reduce((sum, qty) => sum + qty, 0)
+  }
+
+  const handleContinueToReview = () => {
+    if (getTotalTickets() === 0) {
+      alert('Please select at least one ticket')
+      return
+    }
+    if (!termsAccepted) {
+      alert('Please accept the terms and conditions')
+      return
+    }
+    setRegistrationStep(2)
+  }
+
+  const handleConfirmRegistration = () => {
     setIsRegistered(true)
+    setRegistrationStep(1)
+  }
+
+  const handleBackToSelection = () => {
+    setRegistrationStep(1)
   }
 
   const handleShare = () => {
@@ -37,7 +85,7 @@ function EventDetails({ onBack, selectedEventId }) {
     <div className="event-details-page">
       {/* Header */}
       <div className="event-details-header">
-        <button className="back-btn" onClick={onBack}>
+        <button className="back-btn" onClick={() => navigate('/events')}>
           <ChevronLeft size={20} />
           Back to Events
         </button>
@@ -91,9 +139,6 @@ function EventDetails({ onBack, selectedEventId }) {
             <div className="speaker-section">
               <h2>About the Speaker</h2>
               <div className="speaker-card">
-                <div className="speaker-avatar">
-                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt={eventSpeaker.name} />
-                </div>
                 <div className="speaker-info">
                   <h3>{eventSpeaker.name}</h3>
                   <p className="speaker-role">{eventSpeaker.role}</p>
@@ -173,9 +218,93 @@ function EventDetails({ onBack, selectedEventId }) {
                 </div>
                 
                 {!isRegistered ? (
-                  <button className="register-btn" onClick={handleRegister}>
-                    Register for Event
-                  </button>
+                  <>
+                    {registrationStep === 1 ? (
+                      <div className="ticket-selection">
+                        <h4>Select Tickets</h4>
+                        <div className="ticket-types">
+                          {ticketTypes.map(ticket => (
+                            <div key={ticket.id} className="ticket-type-item">
+                              <div className="ticket-type-info">
+                                <span className="ticket-type-name">{ticket.name}</span>
+                                <span className="ticket-type-price">₱{ticket.price.toLocaleString()}</span>
+                              </div>
+                              <p className="ticket-type-description">{ticket.description}</p>
+                              <div className="ticket-quantity">
+                                <button 
+                                  className="quantity-btn"
+                                  onClick={() => handleTicketChange(ticket.id, Math.max(0, (selectedTickets[ticket.id] || 0) - 1))}
+                                >
+                                  -
+                                </button>
+                                <span className="quantity-value">{selectedTickets[ticket.id] || 0}</span>
+                                <button 
+                                  className="quantity-btn"
+                                  onClick={() => handleTicketChange(ticket.id, (selectedTickets[ticket.id] || 0) + 1)}
+                                >
+                                  +
+                                </button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        
+                        <div className="terms-checkbox">
+                          <label>
+                            <input 
+                              type="checkbox" 
+                              checked={termsAccepted}
+                              onChange={(e) => setTermsAccepted(e.target.checked)}
+                            />
+                            <span>I agree to the Terms and Conditions</span>
+                          </label>
+                        </div>
+                        
+                        <button 
+                          className="continue-btn"
+                          onClick={handleContinueToReview}
+                          disabled={getTotalTickets() === 0 || !termsAccepted}
+                        >
+                          Continue to Review
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="order-review">
+                        <h4>Review Order</h4>
+                        <div className="order-summary">
+                          <div className="order-header">
+                            <span>Item</span>
+                            <span>Qty</span>
+                            <span>Price</span>
+                          </div>
+                          {Object.entries(selectedTickets).map(([ticketId, quantity]) => {
+                            if (quantity === 0) return null
+                            const ticket = ticketTypes.find(t => t.id === ticketId)
+                            return (
+                              <div key={ticketId} className="order-item">
+                                <span>{ticket.name}</span>
+                                <span>{quantity}</span>
+                                <span>₱{(ticket.price * quantity).toLocaleString()}</span>
+                              </div>
+                            )
+                          })}
+                          <div className="order-total">
+                            <span>Total</span>
+                            <span>₱{getTotalAmount().toLocaleString()}</span>
+                          </div>
+                        </div>
+                        
+                        <div className="order-actions">
+                          <button className="back-btn" onClick={handleBackToSelection}>
+                            Back
+                          </button>
+                          <button className="confirm-btn" onClick={handleConfirmRegistration}>
+                            Confirm Registration
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </>
                 ) : (
                   <div className="registration-confirmed">
                     <div className="check-icon">✓</div>

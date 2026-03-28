@@ -4,12 +4,12 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const initialAttendees = [
-  { name: 'John Doe', email: 'john@example.com', company: 'Tech Solutions Inc', event: 'React Conference 2024', ticketType: 'Standard', status: 'Confirmed' },
-  { name: 'Jane Smith', email: 'jane@example.com', company: 'Digital Innovations', event: 'React Conference 2024', ticketType: 'VIP', status: 'Confirmed' },
-  { name: 'David Kim', email: 'david@example.com', company: 'Student at Tech University', event: 'React Conference 2024', ticketType: 'Student', status: 'Confirmed' },
-  { name: 'Alex Johnson', email: 'alex@example.com', company: 'Startup Labs', event: 'Web Development Summit', ticketType: 'Standard', status: 'Pending' },
-  { name: 'Maria Garcia', email: 'maria@example.com', company: 'Enterprise Systems', event: 'AI & ML Workshop', ticketType: 'VIP', status: 'Confirmed' },
-  { name: 'Sarah Williams', email: 'sarah@example.com', company: 'Creative Agency', event: 'Frontend Masters Bootcamp', ticketType: 'Standard', status: 'Confirmed' },
+  { name: 'Juan Santos', email: 'juan@example.com', company: 'Tech Solutions Inc', event: 'Philippine Music Festival 2026', ticketType: 'Standard', status: 'Confirmed' },
+  { name: 'Maria Reyes', email: 'maria@example.com', company: 'Digital Innovations', event: 'Philippine Music Festival 2026', ticketType: 'VIP', status: 'Confirmed' },
+  { name: 'Pedro Cruz', email: 'pedro@example.com', company: 'Student at University of the Philippines', event: 'Philippine Music Festival 2026', ticketType: 'Student', status: 'Confirmed' },
+  { name: 'Ana Garcia', email: 'ana@example.com', company: 'Startup Labs', event: 'Manila Tech Conference', ticketType: 'Standard', status: 'Pending' },
+  { name: 'Carlos Villanueva', email: 'carlos@example.com', company: 'Enterprise Systems', event: 'Cebu Business Summit', ticketType: 'VIP', status: 'Confirmed' },
+  { name: 'Elena Mendoza', email: 'elena@example.com', company: 'Creative Agency', event: 'Davao Food Festival', ticketType: 'Standard', status: 'Confirmed' },
 ]
 
 const venuesData = [
@@ -21,39 +21,39 @@ const venuesData = [
 
 const initialEvents = [
   {
-    name: 'React Conference 2024',
-    description: 'Annual conference focusing on React ecosystem and best practices',
-    date: 'June 15-17, 2024',
+    name: 'Philippine Music Festival 2026',
+    description: 'Annual celebration of Filipino music featuring top local and international artists',
+    date: 'June 15-17, 2026',
     location: 'Pasay City, Metro Manila',
     venue: 'SMX Convention Center Manila',
-    speakers: ['Sarah Chen', 'James Wilson', 'Michael Zhang'],
+    speakers: ['Maria Santos', 'Juan dela Cruz', 'Ana Reyes'],
     status: 'Confirmed',
   },
   {
-    name: 'Web Development Summit',
-    description: 'Comprehensive summit on modern web development',
-    date: 'July 8-9, 2024',
+    name: 'Manila Tech Conference',
+    description: 'Premier technology conference showcasing innovation and digital transformation',
+    date: 'July 8-9, 2026',
     location: 'Pasay City, Metro Manila',
     venue: 'Philippine International Convention Center',
-    speakers: ['James Wilson', 'Lisa Thompson'],
+    speakers: ['Carlos Garcia', 'Elena Villanueva'],
     status: 'Planning',
   },
   {
-    name: 'AI & ML Workshop',
-    description: 'Hands-on workshop for AI and machine learning practitioners',
-    date: 'August 12, 2024',
-    location: 'Pasay City, Metro Manila',
-    venue: 'World Trade Center Metro Manila',
-    speakers: ['Emma Rodriguez'],
+    name: 'Cebu Business Summit',
+    description: 'Leading business and entrepreneurship summit in the Visayas region',
+    date: 'August 12, 2026',
+    location: 'Mandaue City, Cebu',
+    venue: 'Cebu International Convention Center',
+    speakers: ['Roberto Tan', 'Isabella Cruz'],
     status: 'Confirmed',
   },
   {
-    name: 'Frontend Masters Bootcamp',
-    description: 'Intensive bootcamp for frontend developers',
-    date: 'September 20-22, 2024',
-    location: 'Mandaue City, Cebu',
-    venue: 'Cebu International Convention Center',
-    speakers: ['Sarah Chen', 'Lisa Thompson'],
+    name: 'Davao Food Festival',
+    description: 'Culinary celebration featuring Mindanao\'s finest dishes and local delicacies',
+    date: 'September 20-22, 2026',
+    location: 'Davao City',
+    venue: 'SMX Convention Center Davao',
+    speakers: ['Miguel Santos', 'Sofia Reyes', 'Diego Mendoza'],
     status: 'Planning',
   },
 ]

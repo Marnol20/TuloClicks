@@ -24,9 +24,6 @@ function UserViewSpeakers() {
         {speakersData.map(function(speaker) {
           return (
             <div className="speaker-card" key={speaker.id}>
-              <div className="speaker-avatar">
-                <span>{speaker.emoji}</span>
-              </div>
               <h3 className="speaker-name">{speaker.name}</h3>
               <p className="speaker-role">
                 <Mic2 size={14} style={{ display: 'inline', marginRight: '6px' }} />

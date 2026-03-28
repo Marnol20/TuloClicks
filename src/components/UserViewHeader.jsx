@@ -1,33 +1,36 @@
 import { Calendar } from 'lucide-react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
-function UserViewHeader({ activeTab, setActiveTab, onSwitchToAdmin }) {
+function UserViewHeader({ onSwitchToAdmin }) {
+  const location = useLocation()
+  const navigate = useNavigate()
+  
   const navItems = [
-    { id: 'home', label: 'HOME' },
-    { id: 'events', label: 'EVENTS' },
-    { id: 'speakers', label: 'SPEAKERS' },
-    { id: 'venue', label: 'VENUE' },
-    { id: 'tickets', label: 'MY TICKETS' },
+    { id: 'home', label: 'HOME', path: '/' },
+    { id: 'events', label: 'EVENTS', path: '/events' },
+    { id: 'speakers', label: 'SPEAKERS', path: '/speakers' },
+    { id: 'venue', label: 'VENUE', path: '/venue' },
+    { id: 'tickets', label: 'MY TICKETS', path: '/tickets' },
   ]
 
   return (
     <header className="user-view-header">
       <div className="user-view-logo">
-        <div className="user-view-logo-icon">
-          <Calendar size={20} />
-        </div>
-        <span>TechConf26</span>
+        <span>ShowFlow</span>
       </div>
 
       <nav className="user-view-nav">
         {navItems.map(function(item) {
+          const isActive = location.pathname === item.path ||
+                          (item.id === 'events' && location.pathname.startsWith('/events'))
           return (
-            <a
+            <Link
               key={item.id}
-              className={`user-view-nav-link ${activeTab === item.id ? 'active' : ''}`}
-              onClick={function() { setActiveTab(item.id) }}
+              to={item.path}
+              className={`user-view-nav-link ${isActive ? 'active' : ''}`}
             >
               {item.label}
-            </a>
+            </Link>
           )
         })}
       </nav>
@@ -36,8 +39,8 @@ function UserViewHeader({ activeTab, setActiveTab, onSwitchToAdmin }) {
         <button className="mode-toggle-btn" onClick={onSwitchToAdmin}>
           Switch to Admin
         </button>
-        <button className="user-view-signin">SIGN IN</button>
-        <button className="user-view-signup">Sign Up</button>
+        <button className="user-view-signin" onClick={() => navigate('/login')}>Log In</button>
+        <button className="user-view-signup" onClick={() => navigate('/signup')}>Sign Up</button>
       </div>
     </header>
   )

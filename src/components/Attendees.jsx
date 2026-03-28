@@ -4,12 +4,12 @@ import { useState } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
 
 const initialAttendees = [
-  { name: 'John Doe', email: 'john@example.com', event: 'React Conference 2024', ticketType: 'Standard', registrationDate: '2024-03-15' },
-  { name: 'Jane Smith', email: 'jane@example.com', event: 'React Conference 2024', ticketType: 'VIP', registrationDate: '2024-03-14' },
-  { name: 'Alex Johnson', email: 'alex@example.com', event: 'Web Development Summit', ticketType: 'Standard', registrationDate: '2024-03-18' },
-  { name: 'Maria Garcia', email: 'maria@example.com', event: 'AI & ML Workshop', ticketType: 'VIP', registrationDate: '2024-03-10' },
-  { name: 'David Kim', email: 'david@example.com', event: 'React Conference 2024', ticketType: 'Student', registrationDate: '2024-03-16' },
-  { name: 'Sarah Williams', email: 'sarah@example.com', event: 'Frontend Masters Bootcamp', ticketType: 'Standard', registrationDate: '2024-03-12' },
+  { name: 'Juan Santos', email: 'juan@example.com', event: 'Philippine Music Festival 2026', ticketType: 'Standard', registrationDate: '2026-03-15' },
+  { name: 'Maria Reyes', email: 'maria@example.com', event: 'Philippine Music Festival 2026', ticketType: 'VIP', registrationDate: '2026-03-14' },
+  { name: 'Ana Garcia', email: 'ana@example.com', event: 'Manila Tech Conference', ticketType: 'Standard', registrationDate: '2026-03-18' },
+  { name: 'Carlos Villanueva', email: 'carlos@example.com', event: 'Cebu Business Summit', ticketType: 'VIP', registrationDate: '2026-03-10' },
+  { name: 'Pedro Cruz', email: 'pedro@example.com', event: 'Philippine Music Festival 2026', ticketType: 'Student', registrationDate: '2026-03-16' },
+  { name: 'Elena Mendoza', email: 'elena@example.com', event: 'Davao Food Festival', ticketType: 'Standard', registrationDate: '2026-03-12' },
 ]
 
 function Attendees() {
@@ -132,10 +132,10 @@ function Attendees() {
             <input className="form-input" placeholder="Email" value={email} onChange={function (e) { setEmail(e.target.value) }} />
             <select className="form-input" value={event} onChange={function (e) { setEvent(e.target.value) }}>
               <option value="">Select Event</option>
-              <option value="React Conference 2024">React Conference 2024</option>
-              <option value="Web Development Summit">Web Development Summit</option>
-              <option value="AI & ML Workshop">AI & ML Workshop</option>
-              <option value="Frontend Masters Bootcamp">Frontend Masters Bootcamp</option>
+              <option value="Philippine Music Festival 2026">Philippine Music Festival 2026</option>
+              <option value="Manila Tech Conference">Manila Tech Conference</option>
+              <option value="Cebu Business Summit">Cebu Business Summit</option>
+              <option value="Davao Food Festival">Davao Food Festival</option>
             </select>
             <select className="form-input" value={ticketType} onChange={function (e) { setTicketType(e.target.value) }}>
               <option value="Standard">Standard</option>
@@ -184,10 +184,10 @@ function Attendees() {
                   <input className="form-input edit-input" value={editName} onChange={function (e) { setEditName(e.target.value) }} />
                   <input className="form-input edit-input" value={editEmail} onChange={function (e) { setEditEmail(e.target.value) }} />
                   <select className="form-input edit-input" value={editEvent} onChange={function (e) { setEditEvent(e.target.value) }}>
-                    <option value="React Conference 2024">React Conference 2024</option>
-                    <option value="Web Development Summit">Web Development Summit</option>
-                    <option value="AI & ML Workshop">AI & ML Workshop</option>
-                    <option value="Frontend Masters Bootcamp">Frontend Masters Bootcamp</option>
+                    <option value="Philippine Music Festival 2026">Philippine Music Festival 2026</option>
+                    <option value="Manila Tech Conference">Manila Tech Conference</option>
+                    <option value="Cebu Business Summit">Cebu Business Summit</option>
+                    <option value="Davao Food Festival">Davao Food Festival</option>
                   </select>
                   <select className="form-input edit-input" value={editTicketType} onChange={function (e) { setEditTicketType(e.target.value) }}>
                     <option value="Standard">Standard</option>

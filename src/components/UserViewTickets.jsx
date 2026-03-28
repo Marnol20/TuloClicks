@@ -1,23 +1,26 @@
 import { Ticket, Calendar, MapPin } from 'lucide-react'
+import { initialVenues } from './Venues'
 
 const ticketsData = [
   {
     id: 1,
-    eventName: 'React Conference 2024',
-    date: 'June 15-17, 2024',
-    location: 'San Francisco, CA',
+    eventName: 'Philippine Music Festival 2026',
+    date: 'June 15-17, 2026',
+    location: initialVenues[0].location,
+    venue: initialVenues[0].name,
     type: 'Full Access Pass',
     status: 'confirmed',
-    ticketNumber: 'TC-2024-001',
+    ticketNumber: 'TC-2026-001',
   },
   {
     id: 2,
-    eventName: 'AI & ML Workshop',
-    date: 'August 12, 2024',
-    location: 'Boston, MA',
+    eventName: 'Cebu Business Summit',
+    date: 'August 12, 2026',
+    location: initialVenues[1].location,
+    venue: initialVenues[1].name,
     type: 'Workshop Only',
     status: 'confirmed',
-    ticketNumber: 'TC-2024-002',
+    ticketNumber: 'TC-2026-002',
   },
 ]
 
@@ -44,6 +47,9 @@ function UserViewTickets() {
                   </p>
                   <p>
                     <MapPin size={14} style={{ display: 'inline', marginRight: '6px' }} />
+                    {ticket.venue}
+                  </p>
+                  <p style={{ fontSize: '13px', color: 'rgba(255, 255, 255, 0.5)', marginLeft: '20px' }}>
                     {ticket.location}
                   </p>
                   <span className="ticket-type">
