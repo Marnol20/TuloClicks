@@ -11,6 +11,7 @@ app.get('/', (req, res) => {
   res.send('API is running')
 })
 
+app.use('/api/attendees', require('./routes/attendees'))
 app.use('/api/venues', require('./routes/venues'))
 app.use('/api/events', require('./routes/events'))
 

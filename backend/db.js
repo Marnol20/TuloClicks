@@ -1,18 +1,22 @@
 const mysql = require('mysql2')
 
-const db = mysql.createConnection({
+const db = mysql.createPool({
   host: '127.0.0.1',
+  port: 3307,
   user: 'root',
   password: '',
-  database: 'TuloClicks',
-  port: 3307
+  database: 'tuloclicks',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
 })
 
-db.connect((err) => {
+db.getConnection((err, connection) => {
   if (err) {
     console.error('Database connection failed:', err)
   } else {
-    console.log('Connected to TuloClicks database')
+    console.log('Connected to MySQL database')
+    connection.release()
   }
 })
 
