@@ -1,6 +1,7 @@
 import '../styles/Venues.css'
 import { MapPin, Plus } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const initialVenues = [
   {
@@ -52,38 +53,72 @@ function Venues() {
   const [capacity, setCapacity] = useState('')
   const [contact, setContact] = useState('')
 
-  function handleCreate() {
-    if (name === '' || address === '' || location === '' || country === '' || capacity === '' || contact === '') {
-      alert('Please fill in all fields')
-      return
-    }
+  useEffect(function () {
+    fetchVenues()
+  }, [])
 
-    const newVenue = {
-      name,
-      address,
-      location,
-      country,
-      capacity,
-      eventsHosted: 0,
-      contact,
-    }
-
-    setVenues([...venues, newVenue])
-    setShowForm(false)
-    setName('')
-    setAddress('')
-    setLocation('')
-    setCountry('')
-    setCapacity('')
-    setContact('')
+  function fetchVenues() {
+    axios.get('http://localhost:5000/api/venues')
+      .then(function (res) {
+        const formattedVenues = res.data.map(function (venue) {
+          return {
+            ...venue,
+            capacity: Number(venue.capacity).toLocaleString(),
+            eventsHosted: venue.eventsHosted || 0,
+          }
+        })
+        setVenues(formattedVenues)
+      })
+      .catch(function (err) {
+        console.error('Error fetching venues:', err)
+      })
   }
+
+  function handleCreate() {
+  if (name === '' || address === '' || location === '' || country === '' || capacity === '' || contact === '') {
+    alert('Please fill in all fields')
+    return
+  }
+
+  const cleanCapacity = capacity.toString().replace(/[^\d]/g, '')
+
+  if (cleanCapacity === '') {
+    alert('Capacity must be a number')
+    return
+  }
+
+  const newVenue = {
+    name,
+    address,
+    location,
+    country,
+    capacity: Number(cleanCapacity),
+    contact,
+  }
+
+  axios.post('http://localhost:5000/api/venues', newVenue)
+    .then(function () {
+      fetchVenues()
+      setShowForm(false)
+      setName('')
+      setAddress('')
+      setLocation('')
+      setCountry('Philippines')
+      setCapacity('')
+      setContact('')
+    })
+    .catch(function (err) {
+      console.error('Error creating venue:', err)
+      alert(err.response?.data?.error || 'Failed to create venue')
+    })
+}
 
   function handleCancel() {
     setShowForm(false)
     setName('')
     setAddress('')
     setLocation('')
-    setCountry('')
+    setCountry('Philippines')
     setCapacity('')
     setContact('')
   }
@@ -126,7 +161,7 @@ function Venues() {
       <div className="venues-list">
         {venues.map(function (venue) {
           return (
-            <div key={venue.name} className="venue-card">
+            <div key={venue.id || venue.name} className="venue-card">
 
               <div className="venue-card-top">
                 <h3>{venue.name}</h3>

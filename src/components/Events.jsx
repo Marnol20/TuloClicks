@@ -1,7 +1,8 @@
 import '../styles/Events.css'
 import { CalendarDays, Plus } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const initialAttendees = [
   { name: 'Juan Santos', email: 'juan@example.com', company: 'Tech Solutions Inc', event: 'Philippine Music Festival 2026', ticketType: 'Standard', status: 'Confirmed' },
@@ -71,28 +72,55 @@ function Events() {
   const [location, setLocation] = useState('')
   const [venue, setVenue] = useState('')
 
+  useEffect(function () {
+    fetchEvents()
+  }, [])
+
+  function fetchEvents() {
+    axios.get('http://localhost:5000/api/events')
+      .then(function (res) {
+        const formattedEvents = res.data.map(function (event) {
+          return {
+            ...event,
+            description: event.description || '',
+            speakers: Array.isArray(event.speakers) ? event.speakers : [],
+            status: event.status || 'Planning',
+          }
+        })
+        setEvents(formattedEvents)
+      })
+.catch(function (err) {
+  console.error('Create event error:', err)
+  console.error('Response data:', err.response?.data)
+  alert(err.response?.data?.error || err.message || 'Failed to create event')
+})
+  }
+
   function handleCreate() {
     if (title === '' || date === '' || location === '' || venue === '') {
       alert('Please fill in all fields')
       return
     }
 
-    const newEvent = {
+    axios.post('http://localhost:5000/api/events', {
       name: title,
-      description: '',
       date: date,
       location: location,
       venue: venue,
-      speakers: [],
-      status: 'Planning',
-    }
-
-    setEvents([...events, newEvent])
-    setShowForm(false)
-    setTitle('')
-    setDate('')
-    setLocation('')
-    setVenue('')
+    })
+      .then(function () {
+        fetchEvents()
+        setShowForm(false)
+        setTitle('')
+        setDate('')
+        setLocation('')
+        setVenue('')
+      })
+      .catch(function (err) {
+  console.error('Create event error:', err)
+  console.error('Response data:', err.response?.data)
+  alert(err.response?.data?.error || err.message || 'Failed to create event')
+})
   }
 
   function handleCancel() {
@@ -181,7 +209,7 @@ function Events() {
           }
 
           return (
-            <div key={event.name} className="event-card">
+            <div key={event.id || event.name} className="event-card">
 
               <div className="event-card-top">
                 <div>
