@@ -1,0 +1,300 @@
+.events-page,
+.speakers-page,
+.venues-page {
+  padding: 24px;
+}
+
+.events-top,
+.speakers-top,
+.venues-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.events-title h2,
+.speakers-title h2,
+.venues-title h2 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.events-title p,
+.speakers-title p,
+.venues-title p {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.new-event-btn,
+.add-speaker-btn,
+.add-venue-btn,
+.create-btn {
+  border: none;
+  background: var(--primary);
+  color: white;
+  padding: 11px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.new-event-btn:hover,
+.add-speaker-btn:hover,
+.add-venue-btn:hover,
+.create-btn:hover {
+  background: var(--primary-hover);
+}
+
+.cancel-btn {
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text);
+  padding: 11px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.cancel-btn:hover {
+  background: #172132;
+}
+
+.create-form {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 22px;
+}
+
+.create-form h3 {
+  margin: 0 0 18px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+.form-input,
+.form-textarea,
+.create-form input,
+.create-form select,
+.create-form textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+  outline: none;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.create-form input:focus,
+.create-form select:focus,
+.create-form textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.14);
+}
+
+.form-textarea,
+.create-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.events-list,
+.venues-list,
+.speakers-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.event-card,
+.venue-card,
+.speaker-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.event-card-top,
+.venue-card-top,
+.speaker-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.event-card-top h3,
+.venue-card-top h3,
+.speaker-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.event-description,
+.venue-address,
+.speaker-email,
+.speaker-event-label {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.event-card-info,
+.venue-card-info {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.info-value {
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.badge.confirmed {
+  background: var(--success-bg);
+  color: #4ade80;
+}
+
+.badge.planning {
+  background: var(--warning-bg);
+  color: #fbbf24;
+}
+
+.badge.cancelled {
+  background: var(--danger-bg);
+  color: #f87171;
+}
+
+.contact-blue {
+  color: var(--info);
+}
+
+.speakers-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.speaker-role {
+  margin: 6px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #c084fc;
+}
+
+.speaker-footer {
+  margin-top: 16px;
+}
+
+@media (max-width: 1000px) {
+  .event-card-info,
+  .venue-card-info {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .speakers-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .events-page,
+  .speakers-page,
+  .venues-page {
+    padding: 18px;
+  }
+
+  .events-top,
+  .speakers-top,
+  .venues-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .event-card-info,
+  .venue-card-info {
+    grid-template-columns: 1fr;
+  }
+
+  .event-card-top,
+  .venue-card-top,
+  .speaker-card-header {
+    flex-direction: column;
+  }
+} 

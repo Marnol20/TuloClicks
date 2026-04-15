@@ -1,0 +1,332 @@
+.event-details-page {
+  min-height: 100vh;
+  background-color: #000000;
+  color: var(--text);
+}
+
+.event-details-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 48px;
+  border-bottom: 1px solid var(--border-soft);
+  background-color: #000000;
+  position: relative;
+  z-index: 20;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.72);
+  background: none;
+  border: none;
+}
+
+.back-btn:hover {
+  color: var(--text);
+}
+
+.event-hero {
+  padding: 48px;
+  background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.event-hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.event-meta-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.event-day {
+  font-size: 14px;
+  font-weight: 700;
+  color: #10b981;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.event-type-badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+}
+
+.event-type-badge.session {
+  color: #94a3b8;
+  background-color: rgba(148, 163, 184, 0.15);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.event-title {
+  margin: 0 0 16px;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.08;
+}
+
+.event-description {
+  margin: 0 0 24px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.62);
+  max-width: 760px;
+}
+
+.event-details-info {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.event-details-content {
+  padding: 64px 48px;
+  background-color: #000000;
+}
+
+.content-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 48px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.speaker-section h2,
+.registration-section h3 {
+  margin: 0 0 20px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.speaker-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.speaker-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.speaker-info h3 {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.speaker-role {
+  margin: 0 0 4px;
+  font-size: 14px;
+  color: #10b981;
+}
+
+.speaker-company {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.speaker-bio {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: 96px;
+  align-self: flex-start;
+}
+
+.registration-card {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.registration-info h4 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.registration-date,
+.registration-time,
+.registration-location {
+  margin: 0 0 4px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.52);
+}
+
+@media (max-width: 1000px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-content {
+    position: static;
+  }
+}
+
+@media (max-width: 720px) {
+  .event-details-header,
+  .event-hero,
+  .event-details-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .event-title {
+    font-size: 34px;
+  }
+
+  .speaker-card {
+    padding: 18px;
+  }
+}
+
+.ticket-qr-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.ticket-qr-image {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 16px;
+}
+
+.ticket-qr-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 240px;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.62);
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+.ticket-qr-placeholder p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.ticket-qr-placeholder span {
+  font-size: 12px;
+  font-weight: 700;
+  color: #22c55e;
+  letter-spacing: 0.04em;
+}
+
+.ticket-download-btn {
+  width: 100%;
+}
+
+/* ===== QR TICKET DESIGN ===== */
+
+.ticket-qr-wrapper {
+  background: #0b1220;
+  border: 1px dashed #334155;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: 0.2s ease;
+}
+
+.ticket-qr-wrapper:hover {
+  border-color: #8b5cf6;
+}
+
+.ticket-qr-wrapper canvas {
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 6px;
+}
+
+.ticket-qr-wrapper span {
+  color: #22c55e;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.ticket-qr-wrapper p {
+  color: #94a3b8;
+  font-size: 13px;
+  text-align: center;
+}
+
+.ticket-download-btn {
+  margin-top: 14px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.ticket-download-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.ticket-download-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
